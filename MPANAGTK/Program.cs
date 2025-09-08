@@ -61,18 +61,7 @@ namespace MPANAGTK
         private static List<IMPANA> InitializeDatabase()
         {
             List<IMPANA> datafromDB = new List<IMPANA>();
-            /*try
-            {
-                using (var context = DbContextFactory.CreateDbContext())
-                {
-                    context.Database.EnsureCreated();
-                    context.MigrateDatabase();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred while initializing the database: {ex.Message}");
-            }*/
+            
             string dbFilePath = "MPANAdb.db"; 
             bool dbExists = File.Exists(dbFilePath);
             progressWindow.UpdateProgress($"{dbFilePath} file exists {dbExists}");
@@ -213,7 +202,6 @@ namespace MPANAGTK
                 Backend.CSVReadFoodDB foodDb = new Backend.CSVReadFoodDB(progressWindow,"FoodNutritionDB", "FoodItem", context);
                 progressWindow.UpdateProgress("Finished Food Database...");
 
-                //redundent
                 progressWindow.UpdateProgress("Reading Food Description...");
                 Backend.CSVFoodDescription foodDescription = new Backend.CSVFoodDescription(progressWindow, "srFoodDescription", context);
 

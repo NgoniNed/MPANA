@@ -53,14 +53,7 @@ public partial class MainWindow : Gtk.Window
         Table fourWayDBViewArea = new Table(2, 2, true);
         fourWayDBViewArea.WidthRequest = 1000;
         fourWayDBViewArea.Attach(foodDBView, 0, 1, 0, 1);
-        //replace ingredientdbview window with options selected window of type fooddb
-        //ingredientdbview will be linked to seed germination side
-        //fourWayDBViewArea.Attach(ingredientDBView, 0, 1, 1, 2);
-
-        /*
-         * Using a reference object to the fooddbview so as to attach to the list which will be appended
-         * with selected ingredients.
-         */
+        
         selectedView = new SelectedIngredientsView(ref foodDBView);
 
         fourWayDBViewArea.Attach(selectedView, 0, 1, 1, 2);
@@ -82,7 +75,6 @@ public partial class MainWindow : Gtk.Window
     private FoodDBView foodDBView;
     public void Searchbtn_Clicked(object sender, EventArgs e)
     {
-        //update the foodbdview with search matches
         if(!searchEntry.Text.Equals(""))
         {
             this.Sensitive = false;
@@ -99,7 +91,6 @@ public partial class MainWindow : Gtk.Window
                         searchCount++;
                         foundMatches.Add(fd_db);
                     }
-                    //System.Diagnostics.Debug.WriteLine($"Current Search Index{dbCounter++} For {tmpSearch} : Found {searchCount}/{readFoodDB.FoodNutr_db.Count}");
 
                 }
             }
@@ -107,8 +98,6 @@ public partial class MainWindow : Gtk.Window
             this.Sensitive = true;
             foodDBView.UpdateTreeView(foundMatches);
         }
-        //consider passing eventargs
-        //throw new NotImplementedException();
     }
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)

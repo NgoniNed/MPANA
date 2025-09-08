@@ -60,11 +60,7 @@ namespace MPANAGTK.Frontend
 
         private void PreviewBtn_Clicked(object sender, EventArgs e)
         {
-            /*
-             * create a new window, pop up preferably
-             * pass it the fooddbref.selectOptions
-             * freeze current window till it is disposed
-             */
+            
             //Console.WriteLine($"There are currently {FoodDBref.selectedOptionsF.Count} selected");
             MPANA_PreviewWindow previewWindow = new MPANA_PreviewWindow(FoodDBref.selectedOptionsF);
             previewWindow.ShowAll();

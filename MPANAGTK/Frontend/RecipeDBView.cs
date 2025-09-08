@@ -40,7 +40,6 @@ namespace MPANAGTK.Frontend
             //IngredientsDB = ingredientDBView;
             RecipeIngredientDB = recipeIngredientDBView;
             //CompoundIngredientsDB = compoundIngredientsDBView;
-            //switch to pass the obect of the reader
             this.cSVReadRecipe = cSVReadRecipe;
             ShadowType = ShadowType.Out;
             SetPolicy(PolicyType.Automatic, PolicyType.Automatic);

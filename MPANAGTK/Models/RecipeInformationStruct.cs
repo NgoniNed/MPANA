@@ -66,7 +66,6 @@ namespace MPANAGTK
         }
     }
     [Serializable]
-    //Compound Ingredient Name,Compound Ingredient Synonyms,entity_id,Contituent Ingredients,Category
     public struct CompoundIngedientsStruct
     {
         public string CompoundIngredientName
