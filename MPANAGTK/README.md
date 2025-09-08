@@ -22,7 +22,7 @@ Features
       access food chemistry data for enhanced food database understanding
       
 Data Sources
-      
+       
     • USDA Food Composition Database (CSV)
     • CulinaryDB Recipe Data (CSV)
 
