@@ -1,0 +1,36 @@
+﻿{
+  "AppAsserts": {
+    "LogoPath": "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MPANAGTK/MPANAGTK/Backend/Graphics/MPANA logo.png"
+  },
+
+  "Databases": {
+    "DatabasePath": "MPANAdb.db",
+    "FoodChemistryDBPath": "FoodChemistry.db"
+  },
+
+  "XMLExports": {
+    "CompoundAlternateParent": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/compound_alternate_parent.xml",
+    "CompoundSubstituents": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/compound_substituents.xml",
+    "CompoundsEnzymes": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/compounds_enzymes.xml",
+    "CompoundsFlavors": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/compounds_flavors.xml",
+    "CompoundsHealthEffects": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/compounds_health_effects.xml",
+    "Enzymes": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/enzymes.xml",
+    "Flavors": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/flavors.xml",
+    "HealthEffects": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/health_effects.xml",
+    "FoodTaxonomies": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/food_taxonomies.xml",
+    "Foods": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/foods.xml",
+    "Nutrients": "/Volumes/Secondary/Archives And Resources/Resources/export_xml/nutrients.xml"
+  },
+
+  "CSVSourceFile": {
+    "FoodNutritionDB": "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/FoodData/food1.csv",
+    "srFoodDescription": "/Volumes/Secondary/Archives And Resources/Resources/USDA-SR26-master/sr26/FOOD_DES.csv",
+    "RecipeDB_Recipe": "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/RecipeData/CulinaryDB/01_Recipe_Details.csv",
+    "IngredientDB_Recipe": "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/RecipeData/CulinaryDB/02_Ingredients.csv",
+    "CompoundIngredientDB_Recipe": "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/RecipeData/CulinaryDB/03_Compound_Ingredients.csv",
+    "RecipeIngredientDB_Recipe": "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/RecipeData/CulinaryDB/04_Recipe-Ingredients_Aliases.csv",
+    "CategoryCsvUrlPath": "/Volumes/Secondary/Archives And Resources/Resources/USDA-SR26-master/sr26/FOOD_DES.csv",
+    "catcodenameurlpath": "/Volumes/Secondary/Archives And Resources/Resources/USDA-SR26-master/sr26/FD_GROUP.csv"
+  }
+
+}

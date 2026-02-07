@@ -6,7 +6,8 @@ namespace MPANAGTK.Backend.Database.FoodChemistry
     {
         public static FoodChemistryDbContext CreateDbContext()
         {
-            var connectionString = "Data Source = FoodChemistry.db";
+            var connectionString = $"Data Source = {Config.Settings.Databases.FoodChemistryDBPath}";// "Data Source = FoodChemistry.db";
+            
             var optionsBuilder = new DbContextOptionsBuilder<FoodChemistryDbContext>();
             optionsBuilder.UseSqlite(connectionString);
             return new FoodChemistryDbContext(optionsBuilder.Options);

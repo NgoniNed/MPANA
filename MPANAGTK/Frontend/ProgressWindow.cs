@@ -3,6 +3,7 @@ using System.IO;
 using System.Timers;
 using Gtk;
 using GLib;
+using MPANAGTK.Backend;
 
 namespace MPANAGTK.Frontend
 {
@@ -37,7 +38,7 @@ namespace MPANAGTK.Frontend
             vbox.PackStart(scroll, true, true, 0);
             Add(vbox);
 
-            string imagePath = "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MPANAGTK/MPANAGTK/Backend/Graphics/MPANA logo.png";
+            string imagePath = Config.Settings.AppAsserts.LogoPath; //"/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MPANAGTK/MPANAGTK/Backend/Graphics/MPANA logo.png";
             if (File.Exists(imagePath))
             {
                 backgroundImage = new Gdk.Pixbuf(imagePath,500,500);

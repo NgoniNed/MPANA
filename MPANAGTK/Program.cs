@@ -61,20 +61,24 @@ namespace MPANAGTK
         private static List<IMPANA> InitializeDatabase()
         {
             List<IMPANA> datafromDB = new List<IMPANA>();
+            progressWindow.UpdateProgress($"{"config.json"} file exists {File.Exists("config.json")}");
+
             
-            string dbFilePath = "MPANAdb.db"; 
+            string dbFilePath = Config.Settings.Databases.DatabasePath; //"MPANAdb.db";
+
             bool dbExists = File.Exists(dbFilePath);
             progressWindow.UpdateProgress($"{dbFilePath} file exists {dbExists}");
-
+            
             var csvFilePaths = new Dictionary<string, string>
             {
-                { "FoodNutritionDB", "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/FoodData/food1.csv" },
-                { "srFoodDescription", "/Volumes/Secondary/Archives And Resources/Resources/USDA-SR26-master/sr26/FOOD_DES.csv" },
-                { "RecipeDB_Recipe", "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/RecipeData/CulinaryDB/01_Recipe_Details.csv" },
-                { "IngredientDB_Recipe", "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/RecipeData/CulinaryDB/02_Ingredients.csv" },
-                { "CompoundIngredientDB_Recipe", "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/RecipeData/CulinaryDB/03_Compound_Ingredients.csv" },
-                { "RecipeIngredientDB_Recipe", "/Volumes/Secondary/Projects/MealPlannerAndNutritionAssistant/MealPlannerAndNutritionAssistant/Resources/RecipeData/CulinaryDB/04_Recipe-Ingredients_Aliases.csv" }
+                { "FoodNutritionDB", Config.Settings.CSVSourceFile.FoodNutritionDB }, //csvFilePaths2.FoodNutritionDB },
+                { "srFoodDescription", Config.Settings.CSVSourceFile.srFoodDescription }, //csvFilePaths2.srFoodDescription },
+                { "RecipeDB_Recipe", Config.Settings.CSVSourceFile.RecipeDB_Recipe }, //csvFilePaths2.RecipeDB_Recipe },
+                { "IngredientDB_Recipe",Config.Settings.CSVSourceFile.IngredientDB_Recipe }, //csvFilePaths2.IngredientDB_Recipe },
+                { "CompoundIngredientDB_Recipe", Config.Settings.CSVSourceFile.CompoundIngredientDB_Recipe }, //csvFilePaths2.CompoundIngredientDB_Recipe },
+                { "RecipeIngredientDB_Recipe", Config.Settings.CSVSourceFile.RecipeIngredientDB_Recipe }, //csvFilePaths2.RecipeIngredientDB_Recipe }
             };
+
             progressWindow.UpdateProgress($"Checking resource file paths");
             foreach(var keyvalue in csvFilePaths)
             {
