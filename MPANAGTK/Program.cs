@@ -116,7 +116,7 @@ namespace MPANAGTK
                     if (consistent)
                     {
                         progressWindow.UpdateProgress("Loading from existing database");
-                        datafromDB=Preprocessor();
+                        datafromDB=Preprocessor(consistent);
                     }
                     else
                     {
@@ -197,29 +197,29 @@ namespace MPANAGTK
             }
         }
 
-        private static List<IMPANA> Preprocessor()
+        private static List<IMPANA> Preprocessor(bool isVerified = false)
         {
             using (var context = DbContextFactory.CreateDbContext())
             {
 
                 progressWindow.UpdateProgress("Reading Food Database...");
-                Backend.CSVReadFoodDB foodDb = new Backend.CSVReadFoodDB(progressWindow,"FoodNutritionDB", "FoodItem", context);
+                Backend.CSVReadFoodDB foodDb = new Backend.CSVReadFoodDB(progressWindow,"FoodNutritionDB", "FoodItem", context, isVerified);
                 progressWindow.UpdateProgress("Finished Food Database...");
 
                 progressWindow.UpdateProgress("Reading Food Description...");
-                Backend.CSVFoodDescription foodDescription = new Backend.CSVFoodDescription(progressWindow, "srFoodDescription", context);
+                Backend.CSVFoodDescription foodDescription = new Backend.CSVFoodDescription(progressWindow, "srFoodDescription", context, isVerified);
 
                 progressWindow.UpdateProgress("Reading Recipe Database...");
-                Backend.CSVReadRecipe CulinaryRecipeDb = new Backend.CSVReadRecipe(progressWindow,"RecipeDB_Recipe", "Recipe", context);
+                Backend.CSVReadRecipe CulinaryRecipeDb = new Backend.CSVReadRecipe(progressWindow,"RecipeDB_Recipe", "Recipe", context, isVerified);
 
                 progressWindow.UpdateProgress("Reading Ingredients Database...");
-                Backend.CSVReadIngredients CulinaryIngredientDb = new Backend.CSVReadIngredients(progressWindow,"IngredientDB_Recipe", "Ingredient", context);
+                Backend.CSVReadIngredients CulinaryIngredientDb = new Backend.CSVReadIngredients(progressWindow,"IngredientDB_Recipe", "Ingredient", context, isVerified);
 
                 progressWindow.UpdateProgress("Reading Compound Ingredients Database...");
-                Backend.CSVReadCompoundIngredients CulinaryCompoundIngredientDb = new Backend.CSVReadCompoundIngredients(progressWindow,"CompoundIngredientDB_Recipe", "CompoundI", context);
+                Backend.CSVReadCompoundIngredients CulinaryCompoundIngredientDb = new Backend.CSVReadCompoundIngredients(progressWindow,"CompoundIngredientDB_Recipe", "CompoundI", context, isVerified);
 
                 progressWindow.UpdateProgress("Reading Recipe Ingredient Aliases Database... 200");
-                Backend.CSVReader_RecipeIngredientDB CulinaryRecipeIngredientAliasDb = new Backend.CSVReader_RecipeIngredientDB(progressWindow,"RecipeIngredientDB_Recipe", "RI_Alias", context);
+                Backend.CSVReader_RecipeIngredientDB CulinaryRecipeIngredientAliasDb = new Backend.CSVReader_RecipeIngredientDB(progressWindow,"RecipeIngredientDB_Recipe", "RI_Alias", context, isVerified);
 
 
                 List<IMPANA> dataCollection = new List<IMPANA>();

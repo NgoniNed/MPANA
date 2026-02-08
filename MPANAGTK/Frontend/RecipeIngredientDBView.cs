@@ -10,7 +10,7 @@ namespace MPANAGTK.Frontend
 
     public class RecipeIngredientDBView : ScrolledWindow
     {
-        public Dictionary<string, RecipeIngredientStruct> cSVRead;
+        [Obsolete]public Dictionary<string, RecipeIngredientStruct> cSVRead;
 
         private MainWindow refOfSearchEntry
         {
@@ -24,7 +24,7 @@ namespace MPANAGTK.Frontend
             this.InstanceOfRecipeDB = dataCollection2;
 
             this.TooltipText = "Recipe Ingredient Database View";
-            this.cSVRead = dataCollection2.RecipeIngredient_db;
+            //this.cSVRead = InstanceOfRecipeDB.RecipeIngredient_db;//dataCollection2.RecipeIngredient_db;
 
             refOfSearchEntry = searchEntry;
 
@@ -66,7 +66,7 @@ namespace MPANAGTK.Frontend
             treeView.Model = seedInforList;
             TreeIter seedIter = new TreeIter();
 
-            foreach (KeyValuePair<string, RecipeIngredientStruct> info in cSVRead)
+            foreach (KeyValuePair<string, RecipeIngredientStruct> info in InstanceOfRecipeDB.RecipeIngredient_db)
             {
                 //seedIter = seedInforList.AppendValues($"{info.Value.RecipeID}", $" {info.Value.OriginalIngredientName}", $"{info.Value.AliasedIngredientName}");
                 seedIter = seedInforList.AppendValues( $" {info.Value.OriginalIngredientName}");
