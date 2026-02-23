@@ -219,7 +219,6 @@
     <Compile Include="Backend\CSVReadCompoundIngredients.cs" />
     <Compile Include="BMI_RViewPoint.cs" />
     <Compile Include="Backend\CSVFoodDescription.cs" />
-    <Compile Include="Backend\BMI.cs" />
     <Compile Include="Backend\Database\IDatabase.cs" />
     <Compile Include="Backend\Database\MPANADbContext.cs" />
     <Compile Include="Backend\Database\FoodNutrition.cs" />
@@ -277,6 +276,12 @@
     <Compile Include="Models\FoodChemistry\Interfaces\IFoods.cs" />
     <Compile Include="Backend\Config.cs" />
     <Compile Include="Backend\AppConfig.cs" />
+    <Compile Include="Models\BMI.cs" />
+    <Compile Include="Models\BMIStatus.cs" />
+    <Compile Include="Models\ActivityLevel.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Frontend\BMI_RView.cs" />
+    <Compile Include="Backend\BMIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Backend\" />

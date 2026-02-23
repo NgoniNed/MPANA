@@ -64,13 +64,14 @@ namespace MPANAGTK.Frontend
             //seedInforList = new ListStore(typeof(string), typeof(string), typeof(string));
             seedInforList = new ListStore(typeof(string));
             treeView.Model = seedInforList;
-            TreeIter seedIter = new TreeIter();
-
+            /*
+             * TreeIter seedIter = new TreeIter();
+            
             foreach (KeyValuePair<string, RecipeIngredientStruct> info in InstanceOfRecipeDB.RecipeIngredient_db)
             {
                 //seedIter = seedInforList.AppendValues($"{info.Value.RecipeID}", $" {info.Value.OriginalIngredientName}", $"{info.Value.AliasedIngredientName}");
                 seedIter = seedInforList.AppendValues( $" {info.Value.OriginalIngredientName}");
-            }
+            }*/
 
             treeView.RowActivated += TreeView_RowActivated;
         }
@@ -90,7 +91,7 @@ namespace MPANAGTK.Frontend
                 {
                     if(alias.RecipeID.Equals(RecipeId))
                     {
-                        refOfSearchEntry.searchEntry.Text = $"{alias.AliasedIngredientName};";
+                        refOfSearchEntry.searchEntry.Text = $"{alias.AliasedIngredientName}";
                     }
                 }
                 //refOfSearchEntry.searchEntry.Text = row.Trim().Replace(' ', ';');
@@ -102,7 +103,7 @@ namespace MPANAGTK.Frontend
                     }
                 }*/
             }
-            refOfSearchEntry.Searchbtn_Clicked(null, null);
+            refOfSearchEntry.OnSearchEntryChanged(null, null);
         }
         //consider obsulting to reduce inmemory requirements
         [Obsolete]

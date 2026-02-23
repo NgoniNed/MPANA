@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using Gtk;
 using MPANAGTK;
 
+[Obsolete]
 internal class BMI_RViewPoint : ScrolledWindow
 {
 
     public BMI_RViewPoint()
     {
-        bMICalculator = new MPANAGTK.Backend.BMI();
+        bMICalculator = new MPANAGTK.Models.BMI();
 
         //ShadowType = ShadowType.In;
         SetPolicy(PolicyType.Automatic, PolicyType.Automatic);
 
-        Table bmiCalcTable = new Table(2,1,true);
+        //Table bmiCalcTable = new Table(2,1,true);
 
+        VBox bmiCalcTable = new VBox(false,15);
+        bmiCalcTable.BorderWidth = 20;
+        //start of top
         VBox heightWeightVBox = new VBox(true,10);
 
         Label weightLabel = new Label();
@@ -45,7 +49,7 @@ internal class BMI_RViewPoint : ScrolledWindow
         userBMIValue.Sensitive = false;
         userBMIValue.Text = "BMI Value Shows Here";
 
-        bmiStatusCombobox = new ComboBox(System.Enum.GetNames(typeof(MPANAGTK.Backend.BMIStatus)));
+        bmiStatusCombobox = new ComboBox(System.Enum.GetNames(typeof(MPANAGTK.Models.BMIStatus)));
         bmiStatusCombobox.Sensitive = false;
 
         VBox bmiStatusValueVBox = new VBox();
@@ -89,8 +93,8 @@ internal class BMI_RViewPoint : ScrolledWindow
 
         Label genderLabel = new Label();
         genderLabel.Text = "Gender";
-        ComboBox genderComboBox = new ComboBox(Enum.GetNames(typeof(MPANAGTK.Backend.Gender)));
-        genderComboBox.Active = (int)MPANAGTK.Backend.Gender.Female;
+        ComboBox genderComboBox = new ComboBox(Enum.GetNames(typeof(MPANAGTK.Models.Gender)));
+        genderComboBox.Active = (int)MPANAGTK.Models.Gender.Female;
         genderComboBox.Changed += GenderComboBox_Changed;
 
         HBox genderHbox = new HBox();
@@ -102,8 +106,8 @@ internal class BMI_RViewPoint : ScrolledWindow
 
         Label activityLabel = new Label();
         activityLabel.Text = "Activity Level";
-        ComboBox activityComboBox = new ComboBox(Enum.GetNames(typeof(MPANAGTK.Backend.ActivityLevel)));
-        activityComboBox.Active = (int)MPANAGTK.Backend.ActivityLevel.Sedentary;
+        ComboBox activityComboBox = new ComboBox(Enum.GetNames(typeof(MPANAGTK.Models.ActivityLevel)));
+        activityComboBox.Active = (int)MPANAGTK.Models.ActivityLevel.Sedentary;
         HBox activityHbox = new HBox();
         activityHbox.PackStart(activityLabel, true, false, 5);
         activityHbox.PackEnd(activityComboBox, true, false, 5);
@@ -120,12 +124,12 @@ internal class BMI_RViewPoint : ScrolledWindow
         topEntryArea.PackStart(heightWeightVBox);
         topEntryArea.PackEnd(ageGenderVBox);
 
-        bMICalculator.BodyBMIPropertyChanged += BMICalculator_BodyBMIPropertyChanged;
-        bMICalculator.BodyBMRPropertyChanged += BMICalculator_BodyBMRPropertyChanged;
-        bMICalculator.BodyActivityPropertyChanged += BMICalculator_BodyActivityPropertyChanged;
+        //bMICalculator.BodyBMIPropertyChanged += BMICalculator_BodyBMIPropertyChanged;
+        //bMICalculator.BodyBMRPropertyChanged += BMICalculator_BodyBMRPropertyChanged;
+        //bMICalculator.BodyActivityPropertyChanged += BMICalculator_BodyActivityPropertyChanged;
 
-        bmiCalcTable.Attach(topEntryArea, 0, 1, 0, 1);
-        bmiCalcTable.Attach(bmiStatusValueVBox, 0, 1, 1, 2);
+        bmiCalcTable.PackStart(topEntryArea, false,false, 0);
+        bmiCalcTable.PackStart(bmiStatusValueVBox, false,false, 0);
 
         this.AddWithViewport(bmiCalcTable);
     }
@@ -133,13 +137,13 @@ internal class BMI_RViewPoint : ScrolledWindow
     private void ActivityComboBox_Changed(object sender, EventArgs e)
     {
         ComboBox comboBox = (ComboBox)sender;
-        bMICalculator.ActivityLevel = (MPANAGTK.Backend.ActivityLevel)comboBox.Active;
+        bMICalculator.ActivityLevel = (MPANAGTK.Models.ActivityLevel)comboBox.Active;
     }
 
     private void GenderComboBox_Changed(object sender, EventArgs e)
     {
         ComboBox comboBox = (ComboBox)sender;
-        bMICalculator.Gender = (MPANAGTK.Backend.Gender)comboBox.Active;
+        bMICalculator.Gender = (MPANAGTK.Models.Gender)comboBox.Active;
     }
     private Entry BMREntry,activityEntry, BMRMaintainEntry;
     private void BMICalculator_BodyActivityPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -201,7 +205,7 @@ internal class BMI_RViewPoint : ScrolledWindow
             bMICalculator.Weight = weightValue;
         }
     }
-    private MPANAGTK.Backend.BMI bMICalculator;
+    private MPANAGTK.Models.BMI bMICalculator;
     private void HeightEntry_TextInserted(object sender, TextInsertedArgs args)
     {
         GetUserHeight(sender);
@@ -228,27 +232,27 @@ internal class BMI_RViewPoint : ScrolledWindow
         userBMIValue.Text = bMICalculator.BodyBMI.ToString();
         if(bMICalculator.BodyBMI<18.5)
         {
-            bmiStatusCombobox.Active = (int)MPANAGTK.Backend.BMIStatus.Underweight;
+            bmiStatusCombobox.Active = (int)MPANAGTK.Models.BMIStatus.Underweight;
         }
         if (bMICalculator.BodyBMI >= 18.5 && bMICalculator.BodyBMI <= 24.9)
         {
-            bmiStatusCombobox.Active = (int)MPANAGTK.Backend.BMIStatus.NormalWeight;
+            bmiStatusCombobox.Active = (int)MPANAGTK.Models.BMIStatus.NormalWeight;
         }
         if (bMICalculator.BodyBMI >= 25.0 && bMICalculator.BodyBMI <= 29.9)
         {
-            bmiStatusCombobox.Active = (int)MPANAGTK.Backend.BMIStatus.PreObesity;
+            bmiStatusCombobox.Active = (int)MPANAGTK.Models.BMIStatus.PreObesity;
         }
         if (bMICalculator.BodyBMI >= 30.0 && bMICalculator.BodyBMI <= 34.9)
         {
-            bmiStatusCombobox.Active = (int)MPANAGTK.Backend.BMIStatus.ObesityClassI;
+            bmiStatusCombobox.Active = (int)MPANAGTK.Models.BMIStatus.ObesityClassI;
         }
         if (bMICalculator.BodyBMI >= 35.0 && bMICalculator.BodyBMI >= 39.9)
         {
-            bmiStatusCombobox.Active = (int)MPANAGTK.Backend.BMIStatus.ObesityClassII;
+            bmiStatusCombobox.Active = (int)MPANAGTK.Models.BMIStatus.ObesityClassII;
         }
         if (bMICalculator.BodyBMI >= 40)
         {
-            bmiStatusCombobox.Active = (int)MPANAGTK.Backend.BMIStatus.ObesityClassIII;
+            bmiStatusCombobox.Active = (int)MPANAGTK.Models.BMIStatus.ObesityClassIII;
         }
     }
     

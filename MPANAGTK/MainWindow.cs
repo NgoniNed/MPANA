@@ -27,7 +27,7 @@ public partial class MainWindow : Gtk.Window
         searchEntry.TextDeleted += SearchEntry_TextDeleted; ;
         searchTable.Attach(searchEntry, 1, 2, 0, 1);
         Button searchbtn = new Button("Search");
-        searchbtn.Clicked += Searchbtn_Clicked;
+        searchbtn.Clicked += OnSearchEntryChanged;
 
         searchTable.Attach(searchbtn, 2, 3, 0, 1);
         searchTable.SizeAllocate(new Gdk.Rectangle(0, 0, 1280, 30));
@@ -73,6 +73,16 @@ public partial class MainWindow : Gtk.Window
     }
 
     private FoodDBView foodDBView;
+
+    public void OnSearchEntryChanged(object sender, EventArgs e)
+    {
+        string term = searchEntry.Text;
+
+        var results = foodDBView.DBReader.SearchFoods(term);
+
+        foodDBView.UpdateTreeView(results);
+    }
+
     public void Searchbtn_Clicked(object sender, EventArgs e)
     {
         if(!searchEntry.Text.Equals(""))

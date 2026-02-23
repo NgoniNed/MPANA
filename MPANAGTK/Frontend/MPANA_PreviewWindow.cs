@@ -2,7 +2,8 @@
 using MPANAGTK;
 using Gtk;
 using MPANAGTK.Backend.Database;
-
+using MPANAGTK.Models;
+using MPANAGTK.Backend;
 namespace MPANAGTK.Frontend
 {
 
@@ -28,7 +29,13 @@ namespace MPANAGTK.Frontend
             //scrolledWindow.Add(previewTable);
             Table previewMain = new Table(2, 1, true);
             previewMain.Attach(scrolledWindow, 0, 1, 0, 1);
-            previewMain.Attach(new BMI_RViewPoint(), 0, 1, 1, 2);
+            //previewMain.Attach(new BMI_RViewPoint(), 0, 1, 1, 2);
+            BMI bmiModel = new BMI();
+            BMI_RView bmiView = new BMI_RView();
+            BMIController bmiController = new BMIController(bmiModel, bmiView);
+
+            previewMain.Attach(bmiView, 0, 1, 1, 2);
+
             Add(previewMain);
         }
     }
