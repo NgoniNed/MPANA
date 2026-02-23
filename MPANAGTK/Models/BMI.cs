@@ -41,7 +41,6 @@ namespace MPANAGTK.Models
             set { _activityLevel = value; OnPropertyChanged(nameof(MaintainWeightBMR)); }
         }
 
-        // --- Math & Business Logic ---
         public double BodyBMI => (Height > 0 && Weight > 0) ? (Weight / (Height * Height)) : 0;
 
         public double BodyBMR
